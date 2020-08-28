@@ -9,7 +9,8 @@ import Videos from './components/Videos';
 import ChatPanel from './components/ChatPanel';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-
+import Store from './components/Store';
+import Contacts from './components/Contacts'
 const useStyles = makeStyles({
 	container: {
 		height: '50vh',
@@ -81,7 +82,7 @@ export default function Additional() {
 	};
 
 	return (
-		<div className={clsx(classes.container, "w-full flex")}>
+		<div className={clsx(classes.container, 'w-full flex')}>
 			<FusePageSimple
 				classes={{
 					toolbar: 'border-b-1'
@@ -97,33 +98,132 @@ export default function Additional() {
 						scrollButtons="off"
 						className="w-full"
 					>
-						<Tab className="normal-case" label="About" />
-						<Tab className="normal-case" label="Documents" />
-						<Tab className="normal-case" label="Videos" />
+						<Tab className="normal-case" label="Информация об участнике" />
+						<Tab className="normal-case" label="Документы" />
+						<Tab className="normal-case" label="Видео/Трансляции" />
+						<Tab className="normal-case" label="Интернет-магазин" />
+						<Tab className="normal-case" label="Контакты" />
 					</Tabs>
 				}
 				content={
 					<div className="p-24">
 						{selectedTab === 0 && (
-							<FuseAnimateGroup enter={{ animation: "transition.slideLeftBigIn", 	stagger: 100, duration: 400, delay: 100 }} leave={{ animation: "transition.slideRightBigOut", stagger: 100, duration: 400, delay: 100 }}>
-								<img className={classes.logo} src="assets/images/fair/banners/placeholder.png" alt="University Logo" />
-								<Typography className={classes.name}>University Name</Typography>
+							<FuseAnimateGroup
+								enter={{
+									animation: 'transition.slideLeftBigIn',
+									stagger: 100,
+									duration: 400,
+									delay: 100
+								}}
+								leave={{
+									animation: 'transition.slideRightBigOut',
+									stagger: 100,
+									duration: 400,
+									delay: 100
+								}}
+							>
+								<img
+									className={classes.logo}
+									src="https://cdn1.flamp.ru/f2ecaa2db38664b62f017f2196b735b9_300_300.jpg"
+									alt="University Logo"
+								/>
+								<Typography className={classes.name}>Аистенок</Typography>
 								<Typography className={classes.desc}>
-									university description...
+									Родители-одиночки часто не имеют возможности полноценно работать и обеспечивать
+									семью: им не с кем оставить детей. Программа «Погода в доме», которую проводит
+									крупнейшая на Урале организация по содействию семьям с детьми в трудной жизненной
+									ситуации «Аистёнок», оказывает бесплатную услугу группы дневного пребывания. В
+									течение пяти часов ребёнок может находиться в Ресурсном центре «Аистёнка», пока его
+									родители работают. Так решается несколько важных проблем, с которыми часто
+									сталкиваются неполные семьи: ребёнок социализируется и проводит время с педагогами,
+									не упуская возможности развиваться, его родители могут работать и обеспечивать
+									семью, не думая каждый день о том, с кем оставить детей. В группе дневного
+									пребывания за детьми ухаживают и присматривают няни и воспитатели, с ними занимаются
+									логопед, психолог. Программа «Погода в доме» реализуется для семей, где ребёнка
+									воспитывает один родитель или опекун, не имеющих путёвки в детский сад. Также в
+									группу дневного пребывания приходят дети, чьи родители находятся в кризисной
+									ситуации (домашнее насилие, опасность для ребёнка и других членов семьи,
+									неблагополучная обстановка дома, маргинальный образ жизни родителей.
 								</Typography>
 							</FuseAnimateGroup>
 						)}
 						{selectedTab === 1 && (
-							<FuseAnimateGroup enter={{ animation: "transition.slideLeftBigIn", 	stagger: 100, duration: 400, delay: 100 }} leave={{ animation: "transition.slideRightBigOut", stagger: 100, duration: 400, delay: 100 }}>
+							<FuseAnimateGroup
+								enter={{
+									animation: 'transition.slideLeftBigIn',
+									stagger: 100,
+									duration: 400,
+									delay: 100
+								}}
+								leave={{
+									animation: 'transition.slideRightBigOut',
+									stagger: 100,
+									duration: 400,
+									delay: 100
+								}}
+							>
 								<div className="w-full">
 									<Documents />
 								</div>
 							</FuseAnimateGroup>
 						)}
 						{selectedTab === 2 && (
-							<FuseAnimateGroup enter={{ animation: "transition.slideLeftBigIn", 	stagger: 100, duration: 400, delay: 100 }} leave={{ animation: "transition.slideRightBigOut", stagger: 100, duration: 400, delay: 100 }}>
+							<FuseAnimateGroup
+								enter={{
+									animation: 'transition.slideLeftBigIn',
+									stagger: 100,
+									duration: 400,
+									delay: 100
+								}}
+								leave={{
+									animation: 'transition.slideRightBigOut',
+									stagger: 100,
+									duration: 400,
+									delay: 100
+								}}
+							>
 								<div className="w-full">
 									<Videos />
+								</div>
+							</FuseAnimateGroup>
+						)}
+						{selectedTab === 3 && (
+							<FuseAnimateGroup
+								enter={{
+									animation: 'transition.slideLeftBigIn',
+									stagger: 100,
+									duration: 400,
+									delay: 100
+								}}
+								leave={{
+									animation: 'transition.slideRightBigOut',
+									stagger: 100,
+									duration: 400,
+									delay: 100
+								}}
+							>
+								<div className="w-full">
+									<Store />
+								</div>
+							</FuseAnimateGroup>
+						)}
+						{selectedTab === 4 && (
+							<FuseAnimateGroup
+								enter={{
+									animation: 'transition.slideLeftBigIn',
+									stagger: 100,
+									duration: 400,
+									delay: 100
+								}}
+								leave={{
+									animation: 'transition.slideRightBigOut',
+									stagger: 100,
+									duration: 400,
+									delay: 100
+								}}
+							>
+								<div className="w-full">
+									<Contacts />
 								</div>
 							</FuseAnimateGroup>
 						)}
@@ -132,12 +232,12 @@ export default function Additional() {
 				innerScroll
 			/>
 			<div className={classes.chat}>
-				<h1 className={classes.chat_title}>Chat</h1>
+				<h1 className={classes.chat_title}>Чат</h1>
 				<div className={classes.chat_window}>
 					<div className={classes.chat_area}>
 						<section>
 							<div id="messages"></div>
-							<input id="chat-input" type="text" placeholder="say anything..." autoFocus />
+							<input id="chat-input" type="text" placeholder="напишите что-нибудь..." autoFocus />
 						</section>
 					</div>
 					<ChatPanel />

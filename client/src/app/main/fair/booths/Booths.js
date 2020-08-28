@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 		height: '750px',
 		textAlign: 'center',
 		paddingTop: '6rem',
-		backgroundImage: 'url("assets/images/fair/booth-bg.jpg")',
+		backgroundImage: 'url("https://typical-moscow.ru/wp-content/uploads/2017/08/2-29.jpg")',
 		backgroundSize: '100% 70%',
 		backgroundRepeat: 'no-repeat',
 		display: 'block'
@@ -47,10 +47,10 @@ const useStyles = makeStyles(theme => ({
 		width: '1000px',
 		height: '382.17px'
 	},
-  booth_image: {
+	booth_image: {
 		width: '1000px',
-    height: '382.17px'
-  },
+		height: '382.17px'
+	},
 	booth_banner: {
 		position: 'absolute',
 		'& > img': {
@@ -60,31 +60,31 @@ const useStyles = makeStyles(theme => ({
 	},
 	booth_banner_standing: {
 		width: '75px',
-    height: '190px',
+		height: '190px',
 		top: '155px'
 	},
-  booth_banner01: {
+	booth_banner01: {
 		width: '222px',
-    height: '124px',
-    top: '64px',
-    left: '382px'
-  },
-  booth_banner02: {
-    left: '62px'
-  },
-  booth_banner03: {
-    left: '170px'
-  },
-  booth_banner04: {
-    left: '748px'
-  },
-  booth_banner05: {
-    left: '858px'
-  },
+		height: '124px',
+		top: '64px',
+		left: '382px'
+	},
+	booth_banner02: {
+		left: '62px'
+	},
+	booth_banner03: {
+		left: '170px'
+	},
+	booth_banner04: {
+		left: '748px'
+	},
+	booth_banner05: {
+		left: '858px'
+	},
 	back_link: {
 		position: 'absolute',
-    top: '2.4rem',
-    left: '2.4rem'
+		top: '2.4rem',
+		left: '2.4rem'
 	},
 	links: {
 		backgroundColor: '#505050',
@@ -320,7 +320,7 @@ export default function Booths() {
 			<div className={classes.booth}>
 
 			</div>
-			<div className={classes.links}>
+			{/* <div className={classes.links}>
 				<Link className={classes.link} to="/">
 					<Button type="button" variant="contained" className={clsx(classes.button, 'normal-case')}>
 						Link Sample
@@ -331,11 +331,11 @@ export default function Booths() {
 						Apply Here
 					</Button>
 				</div>
-			</div>
+			</div> */}
 			<Additional />
-			<Link className={clsx(classes.link, classes.back_link)} to="/fair/hall">
+			<Link className={clsx(classes.link, classes.back_link)} to="/fair/expo">
 				<Button type="button" variant="contained" className={clsx(classes.back_button, 'normal-case')}>
-					Back to Hall
+					Вернуться
 				</Button>
 			</Link>
 		</div>

@@ -37,11 +37,11 @@ export default function RepChat() {
 
 	return (
 		<div className={classes.chat}>
-			<h1 className={classes.chat_title}>Chat</h1>
+			<h1 className={classes.chat_title}>Чат</h1>
 			<div className={classes.chat_area}>
 				<section>
 					<div id="messages"></div>
-					<input id="chat-input" type="text" placeholder="say anything..." autofocus />
+					<input id="chat-input" type="text" placeholder="напишите что-нибудь..." autofocus />
 				</section>
 			</div>
 		</div>
