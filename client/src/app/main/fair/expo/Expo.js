@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
+import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
+import zoom_in from './images/zoom-in.svg';
+import zoom_out from './images/zoom-out.svg';
+import zoom_reset from './images/zoom-reset.svg';
+import Lector from './canvas/Lector';
 
+import Market from './canvas/market';
+import Foodtrack from './canvas/foodtrack';
+import { Tooltip, Button, IconButton, ButtonGroup } from '@material-ui/core';
+
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19];
 const useStyles = makeStyles({
 	hall: {
 		position: 'relative',
@@ -33,194 +43,98 @@ export default function Hall() {
 	const classes = useStyles();
 	const [width, setWidth] = useState(window.innerWidth);
 	useEffect(() => {
-		window.addEventListener("resize", () => setWidth(window.innerWidth));
+		window.addEventListener('resize', () => setWidth(window.innerWidth));
 	}, []);
 	return (
-		<div className={classes.hall}>
-			<div className={classes.hall_image} />
-			<Link to="/fair/hall" className={classes.link}
-				style={{ width: 200, top: width > 1679 ? 260 : 230 }}
-			/>
+		<div className="body">
+			{/* Header */}
 
-			<Link to="/fair/hall" className={classes.link1}
-				style={{
-					backgroundImage: 'url("assets/images/fair/expohall.jpg")',
-					width: width > 1679 ? 10 / 241 * width + 20.34 : 90,
-					top: width > 1679 ? 0.12449 * width - 1 : 208,
-					left: width > 1679 ? 0.261 * width - 10.9 : 428,
-					height: width > 1679 ? 7 / 241 * width + 2.24 : 51
-				}}
-			/>
+			<div>
+				<TransformWrapper>
+					{({ zoomIn, zoomOut, resetTransform, positionX, positionY, scale, previousScale }) => (
+						<>
+							<div className="tools">
+								<div className="spacer" />
+								<ButtonGroup
+        orientation="vertical"
+        color="primary"
+        aria-label="vertical contained primary button group"
+        variant="text"
+      >        
+								<Button
+									onClick={zoomIn}
+								>
+								+
+								</Button>
+								<Button
+									onClick={zoomOut}
+								>
+									-
+								</Button>
+								<Button
+									onClick={resetTransform}
+								>
+									Reset
+								</Button>
+								</ButtonGroup>
+							</div>
+							<div className="element">
+								<TransformComponent>
+									<div style={{ width: '100vw', height: '500', border: '1px solid' }}>
+										<h1>Выставка</h1>
+										<p>Экофест</p>
+										<div
+											style={{
+												display: 'grid',
+												gridTemplateColumns: 'repeat(6, 50px)',
+												gridGap: '2'
+											}}
+										>
+											{arr.map((item, index) => (
+												<Tooltip title={`Стенд № ${item}`} interactive>
+													<Link to="/fair/hall">
+														<IconButton aria-label="delete">
+															<Market />
+														</IconButton>
+													</Link>
+												</Tooltip>
+											))}
+										</div>
+										<div
+											style={{
+												display: 'grid',
+												gridTemplateColumns: 'repeat(4, auto)',
+												gridGap: '2'
+											}}
+										>
+											{arr.map((item, index) => (
+												<Tooltip title={`Стенд № ${item}`} interactive>
+													<Link to="/fair/hall">
+														<IconButton aria-label="delete">
+															<Foodtrack index={index} />
+														</IconButton>
+													</Link>
+												</Tooltip>
+											))}
+										</div>
 
-			<Link to="/fair/hall" className={classes.link1}
-				style={{
-					backgroundImage: 'url("assets/images/fair/expohall.jpg")',
-					width: width > 1679 ? 10 / 241 * width + 20.34 : 90,
-					top: width > 1679 ? 0.12449 * width - 1 : 208,
-					left: width > 1679 ? 74 / 241 * width + 12.456 : 526,
-					height: width > 1679 ? 7 / 241 * width + 2.24 : 51
-				}}
-			/>
-
-			<Link to="/fair/hall" className={classes.link1}
-				style={{
-					backgroundImage: 'url("assets/images/fair/expohall.jpg")',
-					width: width > 1679 ? 10 / 241 * width + 20.34 : 90,
-					top: width > 1679 ? 0.12449 * width - 1 : 208,
-					left: width > 1679 ? 90 / 241 * width - 1.5 : 624,
-					height: width > 1679 ? 7 / 241 * width + 2.24 : 51
-				}}
-			/>
-
-			<Link to="/fair/hall" className={classes.link1}
-				style={{
-					backgroundImage: 'url("assets/images/fair/expohall.jpg")',
-					width: width > 1679 ? 10 / 241 * width + 20.34 : 90,
-					top: width > 1679 ? 0.12449 * width - 1 : 208,
-					left: width > 1679 ? 106 / 241 * width - 14 : 724,
-					height: width > 1679 ? 7 / 241 * width + 2.24 : 51
-				}}
-			/>
-
-			<Link to="/fair/hall" className={classes.link1}
-				style={{
-					backgroundImage: 'url("assets/images/fair/expohall.jpg")',
-					width: width > 1679 ? 10 / 241 * width + 20.34 : 90,
-					top: width > 1679 ? 0.12449 * width - 1 : 208,
-					left: width > 1679 ? 122 / 241 * width - 28 : 824,
-					height: width > 1679 ? 7 / 241 * width + 2.24 : 51
-				}}
-			/>
-
-			<Link to="/fair/hall" className={classes.link1}
-				style={{
-					backgroundImage: 'url("assets/images/fair/expohall.jpg")',
-					width: width > 1679 ? 10 / 241 * width + 20.34 : 90,
-					top: width > 1679 ? 0.12449 * width - 1 : 208,
-					left: width > 1679 ? 122 / 241 * width - 28 : 824,
-					height: width > 1679 ? 7 / 241 * width + 2.24 : 51
-				}}
-			/>
-
-			<Link to="/fair/hall" className={classes.link1}
-				style={{
-					backgroundImage: 'url("assets/images/fair/expohall.jpg")',
-					width: width > 1679 ? 10 / 241 * width + 20.34 : 90,
-					top: width > 1679 ? 0.12449 * width - 1 : 208,
-					left: width > 1679 ? 138 / 241 * width - 44 : 924,
-					height: width > 1679 ? 7 / 241 * width + 2.24 : 51
-				}}
-			/>
-
-			<Link to="/fair/hall" className={classes.link1}
-				style={{
-					backgroundImage: 'url("assets/images/fair/expohall.jpg")',
-					width: width > 1679 ? 10 / 241 * width + 20.34 : 90,
-					top: width > 1679 ? 0.12449 * width - 1 : 208,
-					left: width > 1679 ? 154 / 241 * width - 56.5 : 1024,
-					height: width > 1679 ? 7 / 241 * width + 2.24 : 51
-				}}
-			/>
-
-			<Link to="/fair/hall" className={classes.link1}
-				style={{
-					backgroundImage: 'url("assets/images/fair/expohall.jpg")',
-					width: width > 1679 ? 10 / 241 * width + 20.34 : 90,
-					top: width > 1679 ? 0.12449 * width - 1 : 208,
-					left: width > 1679 ? 170 / 241 * width - 68.5 : 1124,
-					height: width > 1679 ? 7 / 241 * width + 2.24 : 51
-				}}
-			/>
-
-			<Link to="/fair/hall" className={classes.link1}
-				style={{
-					backgroundImage: 'url("assets/images/fair/expohall.jpg")',
-					width: width > 1679 ? 10 / 241 * width + 20.34 : 90,
-					top: width > 1679 ? 39 / 241 * width - 3 : 268,
-					left: width > 1679 ? 0.261 * width - 9 : 428,
-					height: width > 1679 ? 7 / 241 * width + 2.24 : 51
-				}}
-			/>
-
-			<Link to="/fair/hall" className={classes.link1}
-				style={{
-					backgroundImage: 'url("assets/images/fair/expohall.jpg")',
-					width: width > 1679 ? 10 / 241 * width + 20.34 : 90,
-					top: width > 1679 ? 39 / 241 * width - 3 : 268,
-					left: width > 1679 ? 74 / 241 * width + 12.6 : 526,
-					height: width > 1679 ? 7 / 241 * width + 2.24 : 51
-				}}
-			/>
-
-			<Link to="/fair/hall" className={classes.link1}
-				style={{
-					backgroundImage: 'url("assets/images/fair/expohall.jpg")',
-					width: width > 1679 ? 10 / 241 * width + 20.34 : 90,
-					top: width > 1679 ? 39 / 241 * width - 3 : 268,
-					left: width > 1679 ? 90 / 241 * width - 1.5 : 624,
-					height: width > 1679 ? 7 / 241 * width + 2.24 : 51
-				}}
-			/>
-
-			<Link to="/fair/hall" className={classes.link1}
-				style={{
-					backgroundImage: 'url("assets/images/fair/expohall.jpg")',
-					width: width > 1679 ? 10 / 241 * width + 20.34 : 90,
-					top: width > 1679 ? 39 / 241 * width - 3 : 268,
-					left: width > 1679 ? 106 / 241 * width - 14 : 724,
-					height: width > 1679 ? 7 / 241 * width + 2.24 : 51
-				}}
-			/>
-
-			<Link to="/fair/hall" className={classes.link1}
-				style={{
-					backgroundImage: 'url("assets/images/fair/expohall.jpg")',
-					width: width > 1679 ? 10 / 241 * width + 20.34 : 90,
-					top: width > 1679 ? 39 / 241 * width - 3 : 268,
-					left: width > 1679 ? 122 / 241 * width - 28 : 824,
-					height: width > 1679 ? 7 / 241 * width + 2.24 : 51
-				}}
-			/>
-
-			<Link to="/fair/hall" className={classes.link1}
-				style={{
-					backgroundImage: 'url("assets/images/fair/expohall.jpg")',
-					width: width > 1679 ? 10 / 241 * width + 20.34 : 90,
-					top: width > 1679 ? 39 / 241 * width - 3 : 268,
-					left: width > 1679 ? 122 / 241 * width - 28 : 824,
-					height: width > 1679 ? 7 / 241 * width + 2.24 : 51
-				}}
-			/>
-
-			<Link to="/fair/hall" className={classes.link1}
-				style={{
-					backgroundImage: 'url("assets/images/fair/expohall.jpg")',
-					width: width > 1679 ? 10 / 241 * width + 20.34 : 90,
-					top: width > 1679 ? 39 / 241 * width - 3 : 268,
-					left: width > 1679 ? 138 / 241 * width - 44 : 924,
-					height: width > 1679 ? 7 / 241 * width + 2.24 : 51
-				}}
-			/>
-
-			<Link to="/fair/hall" className={classes.link1}
-				style={{
-					backgroundImage: 'url("assets/images/fair/expohall.jpg")',
-					width: width > 1679 ? 10 / 241 * width + 20.34 : 90,
-					top: width > 1679 ? 39 / 241 * width - 3 : 268,
-					left: width > 1679 ? 154 / 241 * width - 56.5 : 1024,
-					height: width > 1679 ? 7 / 241 * width + 2.24 : 51
-				}}
-			/>
-
-			<Link to="/fair/hall" className={classes.link1}
-				style={{
-					backgroundImage: 'url("assets/images/fair/expohall.jpg")',
-					width: width > 1679 ? 10 / 241 * width + 20.34 : 90,
-					top: width > 1679 ? 39 / 241 * width - 3 : 268,
-					left: width > 1679 ? 170 / 241 * width - 68.5 : 1124,
-					height: width > 1679 ? 7 / 241 * width + 2.24 : 51
-				}}
-			/>
+										<Lector />
+									</div>
+								</TransformComponent>
+							</div>
+							<div className="info">
+								<h3>State</h3>
+								<h5>
+									<span className="badge badge-secondary">Position x : {positionX}px</span>
+									<span className="badge badge-secondary">Position y : {positionY}px</span>
+									<span className="badge badge-secondary">Scale : {scale}</span>
+									<span className="badge badge-secondary">Previous scale : {previousScale}</span>
+								</h5>
+							</div>
+						</>
+					)}
+				</TransformWrapper>
+			</div>
 		</div>
 	);
 }
