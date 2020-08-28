@@ -2,11 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
-import zoom_in from './images/zoom-in.svg';
-import zoom_out from './images/zoom-out.svg';
-import zoom_reset from './images/zoom-reset.svg';
 import Lector from './canvas/Lector';
-
+import FooterMenu from './Components/FooterMenu'
 import Market from './canvas/market';
 import Foodtrack from './canvas/foodtrack';
 import { Tooltip, Button, IconButton, ButtonGroup } from '@material-ui/core';
@@ -56,26 +53,14 @@ export default function Hall() {
 							<div className="tools">
 								<div className="spacer" />
 								<ButtonGroup
-        orientation="vertical"
-        color="primary"
-        aria-label="vertical contained primary button group"
-        variant="text"
-      >        
-								<Button
-									onClick={zoomIn}
+									orientation="vertical"
+									color="primary"
+									aria-label="vertical contained primary button group"
+									variant="text"
 								>
-								+
-								</Button>
-								<Button
-									onClick={zoomOut}
-								>
-									-
-								</Button>
-								<Button
-									onClick={resetTransform}
-								>
-									Reset
-								</Button>
+									<Button onClick={zoomIn}>+</Button>
+									<Button onClick={zoomOut}>-</Button>
+									<Button onClick={resetTransform}>Reset</Button>
 								</ButtonGroup>
 							</div>
 							<div className="element">
@@ -92,7 +77,7 @@ export default function Hall() {
 										>
 											{arr.map((item, index) => (
 												<Tooltip title={`Стенд № ${item}`} interactive>
-													<Link to="/fair/hall">
+													<Link to="/fair/booths">
 														<IconButton aria-label="delete">
 															<Market />
 														</IconButton>
@@ -100,7 +85,7 @@ export default function Hall() {
 												</Tooltip>
 											))}
 										</div>
-										<div
+										{/* <div
 											style={{
 												display: 'grid',
 												gridTemplateColumns: 'repeat(4, auto)',
@@ -116,7 +101,7 @@ export default function Hall() {
 													</Link>
 												</Tooltip>
 											))}
-										</div>
+										</div> */}
 
 										<Lector />
 									</div>
@@ -134,6 +119,9 @@ export default function Hall() {
 						</>
 					)}
 				</TransformWrapper>
+			</div>
+			<div className="footer">
+				<FooterMenu />
 			</div>
 		</div>
 	);
